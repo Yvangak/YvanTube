@@ -31,7 +31,6 @@ class App extends React.Component {
         return this.onKeywordSubmit('Ronaldinho');
     }
 
-
     render() {
         return (
             <div className="ui container app">
