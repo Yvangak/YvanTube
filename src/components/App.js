@@ -1,13 +1,16 @@
 import SearchBar from "./SearchBar";
 import VideoList from "./VideoList";
+import VideoPlayer from './VideoPlayer';
 import youtube from "../api/youtube";
 import '../styles/style.css';
 import React from 'react';
 
 class App extends React.Component {
     state = {
-        videos: []
+        videos: [],
+        selectedVideo: null
     };
+
     onKeywordSubmit = async keyword => {
         const response = await youtube.get("/search", {
             params: {
@@ -19,11 +22,16 @@ class App extends React.Component {
         });
     };
 
+    onVideoSelect = (video) => {
+        this.setState({selectedVideo: video});
+    }
+
     render() {
         return (
             <div className="ui container app">
                 <SearchBar search={this.onKeywordSubmit}/>
-                <VideoList videos={this.state.videos}/>
+                <VideoPlayer video={this.state.selectedVideo}/>
+                <VideoList select={this.onVideoSelect} videos={this.state.videos}/>
             </div>
         );
     }

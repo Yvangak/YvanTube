@@ -1,9 +1,9 @@
 import VideoItem from './VideoItem';
 import React from 'react';
 
-const VideoList = ({videos}) => {
+const VideoList = ({videos, select}) => {
     const videoItems = videos.map((video, index) => {
-        return <VideoItem key={index} video={video}/>;
+        return <VideoItem select={select} key={index} video={video}/>;
     });
     return (
         <div className="ui segment">{videoItems}</div>

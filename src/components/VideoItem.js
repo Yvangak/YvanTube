@@ -1,9 +1,8 @@
 import React from 'react';
-
-const VideoItem = ({video}) => {
+const VideoItem = ({video, select}) => {
     return (
-        <div className="ui cards">
-            <div className="card">
+        <div className="ui cards" onClick={()=> select(video)}>
+            <div className="card clicker">
                 <div className="content">
                     <img src={video.snippet.thumbnails.high.url} alt={video.snippet.title}
                          className="right floated mini ui image"/>
